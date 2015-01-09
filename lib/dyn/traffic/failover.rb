@@ -151,16 +151,6 @@ module Dyn
         end
       end
 
-      def find(fqdn, query_hash)
-        results = []
-        get(fqdn).each do |rr|
-          query_hash.each do |key, value|
-            results << rr if rr[key.to_s] == value
-          end
-        end
-        results
-      end
-
       def save(replace=false)
         if replace == true || replace == :replace
           @dyn.put("#{@resource_path}/#{@fqdn}", self)
