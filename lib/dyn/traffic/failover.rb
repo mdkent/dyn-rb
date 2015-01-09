@@ -52,6 +52,8 @@ module Dyn
         @ttl              = options[:ttl] || 30
       end
 
+      attr_reader :active, :status
+
       def address(value=nil)
         value ? (@address = value; self) : @address
       end
