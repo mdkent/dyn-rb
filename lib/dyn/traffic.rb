@@ -25,6 +25,7 @@ module Dyn
       require 'dyn/exceptions'
       require 'dyn/traffic/base'
       require 'dyn/traffic/gslb'
+      require 'dyn/traffic/failover'
       require 'dyn/traffic/http_redirect'
       require 'dyn/traffic/qps_report'
       require 'dyn/traffic/resource'
@@ -122,6 +123,13 @@ module Dyn
       ##
       def gslb(options = {})
         Dyn::Traffic::GSLB.new(self, @zone, options)
+      end
+
+      ##
+      # Failover API
+      ##
+      def failover(options = {})
+        Dyn::Traffic::Failover.new(self, @zone, options)
       end
 
       ##
